@@ -1,0 +1,37 @@
+---
+title: "Course Project: Shiny Application"
+author: "Bryan Kong Chak Bun"
+date: "September 17, 2019"
+output: ioslides_presentation
+---
+
+
+## Introduction
+The Hong Kong currency (HKD) is pagged with US dollars.  As a result, the interest rates of Hong Kong dollars are almost the same as that in US.  In Hong Kong stock market, Investors in Hong Kong looked for similar rate of returns in the USA markets plus risk premium.  
+
+This project is going to study the price level of the Hang Seng Index (HSI) and Dow Jones Industrial Average Index (DJI) in order to learn more about their trend and correlations.
+
+## Objectives
+1. 10 year data of HSI and DJI is downloaded with the "quantmod" package form 'Yahoo.finance' websit.
+2. Users can select number of years that the monthly data they want to see (from  one to ten year) by a slidebar. The montyly closing prices of HSI and DJI are ploted as curves for studying their trend and pattern.
+3. Users can choose to see the annualized return volatilities of HSI and DJI from the checkboxes.
+4. Users can choose to see the correlation between HSI and DJI based on number of years of data by numeric input.
+
+## Programming
+- Two files: server.R and ui.R are coded in R.
+- ui.R is a user interface that user can access the application by moving the slidebar and clicking the check boxes.
+- server.R conisists of server logics.
+- HSI and DJI data are ploted by 'ggplot2' package.
+```{r, eval = FALSE}
+library(ggplot2)
+g <- ggplot(stocks, aes(time))
+          g <- g + geom_line(aes(y=HSI, colour = "HSI")) 
+                + geom_line(aes(y = DJI, color = "DJI"))
+          g <- g + xlab("Year") + ylab("HSI and DJI Index Level") 
+                + ggtitle("HSI and DJI Index Level")
+          g
+```
+
+## Reference
+- Application URL https://bryankong.shinyapps.io/myApp_DDP/
+- Github Repository URL https://github.com/kongchakbun/Course-Project-Shiny-Application-and-Reproducible-Pitch/
